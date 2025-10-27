@@ -214,10 +214,10 @@ on:
       kernel_repo:
         description: "Set the kernel repository."
         required: false
-        default: "ophub/kernel"
+        default: "Gavin/kernel"
         type: choice
         options:
-          - ophub/kernel
+          - Gavin/kernel
       kernel_usage:
         description: "Set the tags of the stable kernel."
         required: false
@@ -247,11 +247,12 @@ on:
       builder_name:
         description: "Set Armbian builder signature."
         required: false
-        default: "ophub"
+        default: "Gavin"
         type: choice
         options:
           - ophub
           - angel
+          - Gavin
 
 env:
   TZ: Etc/UTC
@@ -318,7 +319,7 @@ jobs:
           df -hT ${PWD}
           git clone -q --single-branch --depth=1 --branch=main https://github.com/armbian/build.git build
           ln -sf /builder/build ${GITHUB_WORKSPACE}/build
-          ln -sf /builder/build /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/build
+          ln -sf /builder/build /home/runner/work/_actions/Song828/amlogic-s9xxx-armbian/Gavin/build
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Compile Armbian [ ${{ inputs.set_release }} ]
@@ -356,7 +357,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Rebuild Armbian
-        uses: ophub/amlogic-s9xxx-armbian@main
+        uses: Song828/amlogic-s9xxx-armbian@Gavin
         if: ${{ steps.clean.outputs.status }} == 'success' && !cancelled()
         with:
           build_target: armbian
