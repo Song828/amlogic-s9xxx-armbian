@@ -214,10 +214,10 @@ on:
       kernel_repo:
         description: "Set the kernel repository."
         required: false
-        default: "Gavin/kernel"
+        default: "Song828/amlogic-s9xxx-armbian"
         type: choice
         options:
-          - Gavin/kernel
+          - Song828/amlogic-s9xxx-armbian
       kernel_usage:
         description: "Set the tags of the stable kernel."
         required: false
